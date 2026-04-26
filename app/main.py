@@ -1,7 +1,10 @@
 import streamlit as st
 import plotly.express as px
 
-from app.utils import load_clean_data
+try:
+    from app.utils import load_clean_data
+except ModuleNotFoundError:
+    from utils import load_clean_data
 
 st.set_page_config(page_title="African Climate Trends", layout="wide")
 st.title("African Climate Trend Dashboard")
