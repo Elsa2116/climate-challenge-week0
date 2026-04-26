@@ -12,6 +12,7 @@ env/
 
 # Data (do not commit challenge data)
 data/
+data/*.csv
 *.csv
 
 # Test and coverage artifacts
