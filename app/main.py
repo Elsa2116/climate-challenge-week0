@@ -27,7 +27,20 @@ year_min = int(data["Year"].min())
 year_max = int(data["Year"].max())
 selected_range = st.slider("Select year range", min_value=year_min, max_value=year_max, value=(year_min, year_max))
 
+metric_options = ["T2M", "PRECTOTCORR", "RH2M", "WS2M", "QV2M"]
+selected_metric = st.selectbox("Select variable", options=metric_options, index=0)
+
 filtered = data[(data["Year"] >= selected_range[0]) & (data["Year"] <= selected_range[1])].copy()
+
+st.subheader(f"{selected_metric} Monthly Trend")
+monthly_metric = (
+    filtered.groupby(["Country", filtered["DATE"].dt.to_period("M").astype(str)], as_index=False)[selected_metric]
+    .mean()
+    .rename(columns={selected_metric: "MonthlyAverage"})
+)
+monthly_metric = monthly_metric.rename(columns={monthly_metric.columns[1]: "YearMonth"})
+fig_metric = px.line(monthly_metric, x="YearMonth", y="MonthlyAverage", color="Country")
+st.plotly_chart(fig_metric, use_container_width=True)
 
 monthly_temp = (
     filtered.groupby(["Country", filtered["DATE"].dt.to_period("M").astype(str)], as_index=False)["T2M"]

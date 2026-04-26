@@ -64,12 +64,20 @@ pip install -r requirements.txt
 │   ├── __init__.py
 │   ├── README.md
 │   ├── ethiopia_eda.ipynb
+│   ├── kenya_eda.ipynb
+│   ├── sudan_eda.ipynb
+│   ├── tanzania_eda.ipynb
+│   ├── nigeria_eda.ipynb
 │   └── compare_countries.ipynb
 ├── tests/
 │   └── __init__.py
 ├── scripts/
 │   ├── __init__.py
+│   ├── build_clean_data.py
 │   └── README.md
+├── reports/
+│   ├── interim_report.md
+│   └── final_report_outline.md
 └── app/
     ├── __init__.py
     ├── main.py
@@ -94,6 +102,28 @@ jupyter notebook
 ```
 
 Open notebooks in `notebooks/` and execute cells.
+
+## 5.1) Generate Cleaned CSVs for All Countries
+
+Place raw country files in `data/` using these names:
+- `ethiopia.csv`
+- `kenya.csv`
+- `sudan.csv`
+- `tanzania.csv`
+- `nigeria.csv`
+
+Then run:
+
+```bash
+python scripts/build_clean_data.py --data-dir data
+```
+
+This creates:
+- `data/ethiopia_clean.csv`
+- `data/kenya_clean.csv`
+- `data/sudan_clean.csv`
+- `data/tanzania_clean.csv`
+- `data/nigeria_clean.csv`
 
 ## 6) Running Streamlit Dashboard (Bonus)
 
