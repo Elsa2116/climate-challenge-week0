@@ -106,6 +106,7 @@ Open notebooks in `notebooks/` and execute cells.
 ## 5.1) Generate Cleaned CSVs for All Countries
 
 Place raw country files in `data/` using these names:
+
 - `ethiopia.csv`
 - `kenya.csv`
 - `sudan.csv`
@@ -119,6 +120,7 @@ python scripts/build_clean_data.py --data-dir data
 ```
 
 This creates:
+
 - `data/ethiopia_clean.csv`
 - `data/kenya_clean.csv`
 - `data/sudan_clean.csv`
